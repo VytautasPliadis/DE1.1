@@ -1,7 +1,7 @@
 import streamlit as st
-from dice import DiceGame  # Importing DiceGame class from dice module
+from dice.dice import DiceGame  # Importing DiceGame class from dice module
 import inspect
-import time
+
 
 
 # Function to toggle game state
@@ -74,17 +74,9 @@ if start_btn:
 
 if stop_btn:
     try:
-        # Determine the winner of the game and display the result
-        winner = st.session_state.game.determine_winner()
-        if len(winner) > 1:
-            winners = ', '.join(winner)
-            st.sidebar.success(f'{winners} are the winners!')
-        else:
-            st.sidebar.success(f'{winner[0]} is a winner!')
-        time.sleep(4)  # Pause for a few seconds to display the result
-        st.sidebar.info('Click "Apply Settings" to restart the game.')
+        st.sidebar.success(st.session_state.game)
     except Exception as e:
-        # Handle exceptions and display a warning message
         st.sidebar.warning(f'Roll the dice at least once.\n'
-                           f'\nClick "Apply Settings" to restart the game.\n'
-                           f'\nAn unexpected error occurred: {e}\n')
+                                f'\nClick "Apply Settings" to restart the game.\n'
+                                f'\nAn unexpected error occurred: {e}\n')
+        pass

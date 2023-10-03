@@ -1,17 +1,18 @@
-# [DE 1.1: Dice Game 🎲](https://vytautaspliadis-de1-1-app-6ggr12.streamlit.app/)
+# DE 1.1: Dice Game
 
 Project for Turing College's Module 1: Introduction to Data Engineering, Sprint 1: Intermediate Python & Git.
-- [Play the Dice Game](https://vytautaspliadis-de1-1-app-6ggr12.streamlit.app/)
 
 ## Project Overview
 This Python application simulates a simple dice game for multiple players. Players can customize the game settings, roll dice, and determine the winner based on the highest sum of dice roll outcomes. 
 The game is implemented using the Streamlit web framework and consists of three main files:
 
 - **app.py:** The main application file containing the Streamlit web interface and game logic.
-- **dice.py:** A module defining the `DiceGame` class, which represents the game's core functionality.
+- **dice.py:** A module git pullgit defining the `DiceGame` class, which represents the game's core functionality.
 - **test_dice.py** A unit tests for the `DiceGame` class functionality.
-
 ## How to Play 
+![Alt Text](jpg/UI.JPG)
+
+### [Click here to play the dice game](https://vytautaspliadis-de1-1-app-6ggr12.streamlit.app/)
 
 ### Configure Game Settings:
 
