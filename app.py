@@ -1,7 +1,6 @@
 import streamlit as st
-from dice.dice import DiceGame  # Importing DiceGame class from dice module
+from src.dice import DiceGame  # Importing DiceGame class from src module
 import inspect
-
 
 
 # Function to toggle game state
@@ -31,7 +30,7 @@ if not st.session_state.game_state:
     with st.expander("Learn How to Play:"):
         st.markdown("1. Edit the game settings and click 'Apply Settings' to confirm:\n"
                     "\n     - Select the number of players for the game.\n"
-                    "\n     - Choose how many dice each player will use in a single throw.\n"
+                    "\n     - Choose how many src each player will use in a single throw.\n"
                     "\n     - Enter the number of sides on each die.\n"
                     "\n2. Click the 'Roll Dice' button to record players' scores within a table. "
                     "You can push the button multiple times.\n"
@@ -44,12 +43,12 @@ if not st.session_state.game_state:
 # Sidebar UI for game settings
 with st.sidebar:
     st.sidebar.markdown('## SETTINGS:')
-    # Sliders for number of players, dice, and sides
-    num_players = st.slider('Number of players', 2, 4, 4, disabled=st.session_state.game_state)
-    num_dice = st.slider('Number of dice', 1, 5, 5, disabled=st.session_state.game_state)
+    # Sliders for number of players, src, and sides
+    num_players = st.slider('Number of players', 2, 5, 3, disabled=st.session_state.game_state)
+    num_dice = st.slider('Number of src', 1, 5, 1, disabled=st.session_state.game_state)
     num_sides = st.slider('Number of sides on a single die', 4, 100, 6, disabled=st.session_state.game_state)
 
-    # Buttons for applying settings, rolling dice, and ending the game
+    # Buttons for applying settings, rolling src, and ending the game
     settings_btn = st.button('Apply Settings', use_container_width=True, disabled=st.session_state.game_state,
                              on_click=toggle_game_state)
     start_btn = st.button('Roll Dice', use_container_width=True, disabled=not st.session_state.game_state)
@@ -63,12 +62,8 @@ if settings_btn:
     st.session_state.game = DiceGame(num_players, num_dice, num_sides)
 
 if start_btn:
-    # Conduct a game round and display player scores and dice rolls
+    # Conduct a game round and display player scores and src rolls
     game_round = st.session_state.game.conduct_round()
-    game_record = st.session_state.game.calculate_player_sums()
-    st.sidebar.markdown('\n')
-    st.sidebar.caption('TOTAL SCORE TABLE:')
-    st.sidebar.dataframe(game_record, use_container_width=True)
     st.caption('ROLL ROUND DICE TABLE')
     st.dataframe(game_round, use_container_width=True, hide_index=False)
 
@@ -76,7 +71,7 @@ if stop_btn:
     try:
         st.sidebar.success(st.session_state.game)
     except Exception as e:
-        st.sidebar.warning(f'Roll the dice at least once.\n'
-                                f'\nClick "Apply Settings" to restart the game.\n'
-                                f'\nAn unexpected error occurred: {e}\n')
+        st.sidebar.warning(f'Roll the src at least once.\n'
+                           f'\nClick "Apply Settings" to restart the game.\n'
+                           f'\nAn unexpected error occurred: {e}\n')
         pass
