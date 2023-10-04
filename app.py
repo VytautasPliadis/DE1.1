@@ -45,7 +45,7 @@ with st.sidebar:
     st.sidebar.markdown('## SETTINGS:')
     # Sliders for number of players, src, and sides
     num_players = st.slider('Number of players', 2, 5, 3, disabled=st.session_state.game_state)
-    num_dice = st.slider('Number of src', 1, 5, 1, disabled=st.session_state.game_state)
+    num_dice = st.slider('Number of dice', 1, 5, 1, disabled=st.session_state.game_state)
     num_sides = st.slider('Number of sides on a single die', 4, 100, 6, disabled=st.session_state.game_state)
 
     # Buttons for applying settings, rolling src, and ending the game
